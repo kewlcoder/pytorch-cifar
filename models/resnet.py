@@ -24,6 +24,14 @@ class BasicBlock(nn.Module):
         self.bn2 = nn.BatchNorm2d(planes)
 
         self.shortcut = nn.Sequential()
+        
+        """
+        We need to increase/expand the dimensions of the output so that it can be
+        fed as input to the next block(which has higher number of filters/dimensions).
+        Thus, from the second block onwards(first block has stride = 1) add a Conv 
+        layer in the shortcut connection to upscale the dimensionality of the 
+        output to be added.
+        """
         if stride != 1 or in_planes != self.expansion*planes:
             self.shortcut = nn.Sequential(
                 nn.Conv2d(in_planes, self.expansion*planes,
@@ -54,6 +62,9 @@ class Bottleneck(nn.Module):
         self.bn3 = nn.BatchNorm2d(self.expansion*planes)
 
         self.shortcut = nn.Sequential()
+        ''' some shortcut connections have Conv layer to match the upscaling/expansion
+         of dimensions
+         '''
         if stride != 1 or in_planes != self.expansion*planes:
             self.shortcut = nn.Sequential(
                 nn.Conv2d(in_planes, self.expansion*planes,
@@ -85,11 +96,16 @@ class ResNet(nn.Module):
         self.linear = nn.Linear(512*block.expansion, num_classes)
 
     def _make_layer(self, block, planes, num_blocks, stride):
+        # the length of strides list eventually becomes equal to number of blocks/layers to add.
         strides = [stride] + [1]*(num_blocks-1)
+
         layers = []
         for stride in strides:
             layers.append(block(self.in_planes, planes, stride))
+
+            # BasicBlock has expansion = 1.
             self.in_planes = planes * block.expansion
+
         return nn.Sequential(*layers)
 
     def forward(self, x):
@@ -130,3 +146,13 @@ def test():
     print(y.size())
 
 # test()
+
+from pytorch_model_summary import summary
+
+model_name = 'ResNet18'
+print(model_name)
+net = ResNet18()
+batch_size = 1
+# print(summary(net, torch.randn(2,3,32,32), show_input=True))
+# print(summary(net, torch.randn(2,3,64,64), batch_size=2, show_input=True, show_hierarchical=True, max_depth=True, show_parent_layers=True))
+print(summary(net, torch.randn(batch_size, 3, 32, 32), batch_size=batch_size, show_input=True, show_hierarchical=True, max_depth=True, show_parent_layers=True))

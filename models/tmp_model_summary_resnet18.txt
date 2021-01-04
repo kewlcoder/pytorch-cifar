@@ -1,0 +1,107 @@
+ResNet18
+----------------------------------------------------------------------------------------
+   Parent Layers       Layer (type)          Input Shape         Param #     Tr. Param #
+========================================================================================
+          ResNet           Conv2d-1       [1, 3, 32, 32]           1,728           1,728
+          ResNet      BatchNorm2d-2      [1, 64, 32, 32]             128             128
+          ResNet       BasicBlock-3      [1, 64, 32, 32]          73,984          73,984
+          ResNet       BasicBlock-4      [1, 64, 32, 32]          73,984          73,984
+          ResNet       BasicBlock-5      [1, 64, 32, 32]         230,144         230,144
+          ResNet       BasicBlock-6     [1, 128, 16, 16]         295,424         295,424
+          ResNet       BasicBlock-7     [1, 128, 16, 16]         919,040         919,040
+          ResNet       BasicBlock-8       [1, 256, 8, 8]       1,180,672       1,180,672
+          ResNet       BasicBlock-9       [1, 256, 8, 8]       3,673,088       3,673,088
+          ResNet      BasicBlock-10       [1, 512, 4, 4]       4,720,640       4,720,640
+          ResNet          Linear-11             [1, 512]           5,130           5,130
+========================================================================================
+Total params: 11,173,962
+Trainable params: 11,173,962
+Non-trainable params: 0
+Batch size: 1
+----------------------------------------------------------------------------------------
+
+
+============================================== Hierarchical Summary ==============================================
+
+ResNet(
+  (conv1): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False), 1,728 params
+  (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 128 params
+  (layer1): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False), 36,864 params
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 128 params
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False), 36,864 params
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 128 params
+      (shortcut): Sequential(), 0 params
+    ), 73,984 params
+    (1): BasicBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False), 36,864 params
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 128 params
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False), 36,864 params
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 128 params
+      (shortcut): Sequential(), 0 params
+    ), 73,984 params
+  ), 147,968 params
+  (layer2): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False), 73,728 params
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 256 params
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False), 147,456 params
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 256 params
+      (shortcut): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False), 8,192 params
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 256 params
+      ), 8,448 params
+    ), 230,144 params
+    (1): BasicBlock(
+      (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False), 147,456 params
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 256 params
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False), 147,456 params
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 256 params
+      (shortcut): Sequential(), 0 params
+    ), 295,424 params
+  ), 525,568 params
+  (layer3): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False), 294,912 params
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 512 params
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False), 589,824 params
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 512 params
+      (shortcut): Sequential(
+        (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False), 32,768 params
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 512 params
+      ), 33,280 params
+    ), 919,040 params
+    (1): BasicBlock(
+      (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False), 589,824 params
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 512 params
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False), 589,824 params
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 512 params
+      (shortcut): Sequential(), 0 params
+    ), 1,180,672 params
+  ), 2,099,712 params
+  (layer4): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False), 1,179,648 params
+      (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 1,024 params
+      (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False), 2,359,296 params
+      (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 1,024 params
+      (shortcut): Sequential(
+        (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False), 131,072 params
+        (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 1,024 params
+      ), 132,096 params
+    ), 3,673,088 params
+    (1): BasicBlock(
+      (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False), 2,359,296 params
+      (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 1,024 params
+      (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False), 2,359,296 params
+      (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 1,024 params
+      (shortcut): Sequential(), 0 params
+    ), 4,720,640 params
+  ), 8,393,728 params
+  (linear): Linear(in_features=512, out_features=10, bias=True), 5,130 params
+), 11,173,962 params
+
+
+==================================================================================================================
+

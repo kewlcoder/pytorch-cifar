@@ -93,3 +93,11 @@ def test_resnext():
     print(y.size())
 
 # test_resnext()
+
+from pytorch_model_summary import summary
+model_name = "ResNeXt29_2x64d"
+print(model_name)
+net = ResNeXt29_2x64d()
+batch_size = 1
+print(summary(net, torch.randn(batch_size, 3, 32, 32), batch_size=batch_size, show_input=True
+        , show_hierarchical=True, max_depth=True, show_parent_layers=True))

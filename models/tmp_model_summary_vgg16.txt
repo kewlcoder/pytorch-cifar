@@ -1,0 +1,115 @@
+VGG16
+ out = out.view(out.size(0), -1) = torch.Size([2, 512])
+----------------------------------------------------------------------------------------
+   Parent Layers       Layer (type)          Input Shape         Param #     Tr. Param #
+========================================================================================
+             VGG           Conv2d-1       [2, 3, 32, 32]           1,792           1,792
+             VGG      BatchNorm2d-2      [2, 64, 32, 32]             128             128
+             VGG             ReLU-3      [2, 64, 32, 32]               0               0
+             VGG           Conv2d-4      [2, 64, 32, 32]          36,928          36,928
+             VGG      BatchNorm2d-5      [2, 64, 32, 32]             128             128
+             VGG             ReLU-6      [2, 64, 32, 32]               0               0
+             VGG        MaxPool2d-7      [2, 64, 32, 32]               0               0
+             VGG           Conv2d-8      [2, 64, 16, 16]          73,856          73,856
+             VGG      BatchNorm2d-9     [2, 128, 16, 16]             256             256
+             VGG            ReLU-10     [2, 128, 16, 16]               0               0
+             VGG          Conv2d-11     [2, 128, 16, 16]         147,584         147,584
+             VGG     BatchNorm2d-12     [2, 128, 16, 16]             256             256
+             VGG            ReLU-13     [2, 128, 16, 16]               0               0
+             VGG       MaxPool2d-14     [2, 128, 16, 16]               0               0
+             VGG          Conv2d-15       [2, 128, 8, 8]         295,168         295,168
+             VGG     BatchNorm2d-16       [2, 256, 8, 8]             512             512
+             VGG            ReLU-17       [2, 256, 8, 8]               0               0
+             VGG          Conv2d-18       [2, 256, 8, 8]         590,080         590,080
+             VGG     BatchNorm2d-19       [2, 256, 8, 8]             512             512
+             VGG            ReLU-20       [2, 256, 8, 8]               0               0
+             VGG          Conv2d-21       [2, 256, 8, 8]         590,080         590,080
+             VGG     BatchNorm2d-22       [2, 256, 8, 8]             512             512
+             VGG            ReLU-23       [2, 256, 8, 8]               0               0
+             VGG       MaxPool2d-24       [2, 256, 8, 8]               0               0
+             VGG          Conv2d-25       [2, 256, 4, 4]       1,180,160       1,180,160
+             VGG     BatchNorm2d-26       [2, 512, 4, 4]           1,024           1,024
+             VGG            ReLU-27       [2, 512, 4, 4]               0               0
+             VGG          Conv2d-28       [2, 512, 4, 4]       2,359,808       2,359,808
+             VGG     BatchNorm2d-29       [2, 512, 4, 4]           1,024           1,024
+             VGG            ReLU-30       [2, 512, 4, 4]               0               0
+             VGG          Conv2d-31       [2, 512, 4, 4]       2,359,808       2,359,808
+             VGG     BatchNorm2d-32       [2, 512, 4, 4]           1,024           1,024
+             VGG            ReLU-33       [2, 512, 4, 4]               0               0
+             VGG       MaxPool2d-34       [2, 512, 4, 4]               0               0
+             VGG          Conv2d-35       [2, 512, 2, 2]       2,359,808       2,359,808
+             VGG     BatchNorm2d-36       [2, 512, 2, 2]           1,024           1,024
+             VGG            ReLU-37       [2, 512, 2, 2]               0               0
+             VGG          Conv2d-38       [2, 512, 2, 2]       2,359,808       2,359,808
+             VGG     BatchNorm2d-39       [2, 512, 2, 2]           1,024           1,024
+             VGG            ReLU-40       [2, 512, 2, 2]               0               0
+             VGG          Conv2d-41       [2, 512, 2, 2]       2,359,808       2,359,808
+             VGG     BatchNorm2d-42       [2, 512, 2, 2]           1,024           1,024
+             VGG            ReLU-43       [2, 512, 2, 2]               0               0
+             VGG       MaxPool2d-44       [2, 512, 2, 2]               0               0
+             VGG       AvgPool2d-45       [2, 512, 1, 1]               0               0
+             VGG          Linear-46             [2, 512]           5,130           5,130
+========================================================================================
+Total params: 14,728,266
+Trainable params: 14,728,266
+Non-trainable params: 0
+Batch size: 2
+----------------------------------------------------------------------------------------
+
+
+========================================== Hierarchical Summary ==========================================
+
+VGG(
+  (features): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), 1,792 params
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 128 params
+    (2): ReLU(inplace=True), 0 params
+    (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), 36,928 params
+    (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 128 params
+    (5): ReLU(inplace=True), 0 params
+    (6): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False), 0 params
+    (7): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), 73,856 params
+    (8): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 256 params
+    (9): ReLU(inplace=True), 0 params
+    (10): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), 147,584 params
+    (11): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 256 params
+    (12): ReLU(inplace=True), 0 params
+    (13): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False), 0 params
+    (14): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), 295,168 params
+    (15): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 512 params
+    (16): ReLU(inplace=True), 0 params
+    (17): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), 590,080 params
+    (18): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 512 params
+    (19): ReLU(inplace=True), 0 params
+    (20): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), 590,080 params
+    (21): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 512 params
+    (22): ReLU(inplace=True), 0 params
+    (23): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False), 0 params
+    (24): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), 1,180,160 params
+    (25): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 1,024 params
+    (26): ReLU(inplace=True), 0 params
+    (27): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), 2,359,808 params
+    (28): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 1,024 params
+    (29): ReLU(inplace=True), 0 params
+    (30): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), 2,359,808 params
+    (31): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 1,024 params
+    (32): ReLU(inplace=True), 0 params
+    (33): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False), 0 params
+    (34): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), 2,359,808 params
+    (35): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 1,024 params
+    (36): ReLU(inplace=True), 0 params
+    (37): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), 2,359,808 params
+    (38): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 1,024 params
+    (39): ReLU(inplace=True), 0 params
+    (40): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)), 2,359,808 params
+    (41): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True), 1,024 params
+    (42): ReLU(inplace=True), 0 params
+    (43): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False), 0 params
+    (44): AvgPool2d(kernel_size=1, stride=1, padding=0), 0 params
+  ), 14,723,136 params
+  (classifier): Linear(in_features=512, out_features=10, bias=True), 5,130 params
+), 14,728,266 params
+
+
+==========================================================================================================
+

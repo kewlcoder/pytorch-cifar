@@ -15,13 +15,17 @@ class Block(nn.Module):
         self.stride = stride
 
         planes = expansion * in_planes
+        # expand
         self.conv1 = nn.Conv2d(in_planes, planes, kernel_size=1, stride=1, padding=0, bias=False)
         self.bn1 = nn.BatchNorm2d(planes)
+        # depthwise -> using groups=planes
         self.conv2 = nn.Conv2d(planes, planes, kernel_size=3, stride=stride, padding=1, groups=planes, bias=False)
         self.bn2 = nn.BatchNorm2d(planes)
+        # pointwise - 1D conv
         self.conv3 = nn.Conv2d(planes, out_planes, kernel_size=1, stride=1, padding=0, bias=False)
         self.bn3 = nn.BatchNorm2d(out_planes)
 
+        # Add conv to residual connection to match the upscaling/expansion of dimensions
         self.shortcut = nn.Sequential()
         if stride == 1 and in_planes != out_planes:
             self.shortcut = nn.Sequential(
@@ -72,6 +76,7 @@ class MobileNetV2(nn.Module):
         out = F.relu(self.bn2(self.conv2(out)))
         # NOTE: change pooling kernel_size 7 -> 4 for CIFAR10
         out = F.avg_pool2d(out, 4)
+        # expand dims for fully connected 
         out = out.view(out.size(0), -1)
         out = self.linear(out)
         return out
@@ -84,3 +89,10 @@ def test():
     print(y.size())
 
 # test()
+
+from pytorch_model_summary import summary
+
+net = MobileNetV2()
+batch_size = 2
+print(summary(net, torch.randn(batch_size, 3, 32, 32), batch_size=batch_size, show_input=True
+        , show_hierarchical=True, max_depth=True, show_parent_layers=True))
